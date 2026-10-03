@@ -1,0 +1,25 @@
+// Dados de contato [A CONFIRMAR]: trocar pelos oficiais antes de publicar.
+export const site = {
+  name: "Rastro Collect",
+  tagline: "Cards. Coleção. Experiência.",
+  description:
+    "A Rastro Collect leva o universo TCG para dentro dos shopping centers por meio de uma experiência de compra autônoma, moderna e visualmente atrativa.",
+  whatsapp: "5500000000000", // [A CONFIRMAR]
+  whatsappMessage: "Olá! Quero conhecer a Rastro Collect para o meu shopping.",
+  email: "contato@rastrocollect.com.br", // [A CONFIRMAR]
+  instagram: "rastrocollect", // [A CONFIRMAR]
+  cnpj: "29.458.311/0001-80",
+};
+
+export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`;
+export const instagramUrl = `https://instagram.com/${site.instagram}`;
+
+export const nav = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#maquina", label: "A máquina" },
+  { href: "#produtos", label: "Produtos" },
+  { href: "#shopping", label: "Para o shopping" },
+  { href: "#operacao", label: "Operação" },
+];
+
+export const universes = ["Pokémon", "Disney Lorcana", "Yu-Gi-Oh!", "One Piece", "Magic"];

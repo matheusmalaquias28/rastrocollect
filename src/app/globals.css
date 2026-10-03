@@ -1,0 +1,445 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0e15;
+  --color-ink-2: #15131f;
+  --color-paper: #fbfaff;
+  --color-mist: #f1eff7;
+  --color-line: #e6e3ef;
+  --color-muted: #5f5c6e;
+  --color-roxo: #6632ef;
+  --color-violeta: #b93ced;
+  --color-lilas: #d9c9ff;
+  --color-lilas-50: #f5f0ff;
+  --color-rosa: #fc11a4;
+  --color-rosa-50: #ffe8f6;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Base ---------- */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+::selection {
+  background: var(--color-rosa);
+  color: #fff;
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  width: calc(100vw - 40px);
+  margin-inline: auto;
+}
+@media (min-width: 768px) {
+  .wrap {
+    width: 80vw;
+  }
+}
+.section {
+  padding-block: clamp(6rem, 13vw, 13rem);
+}
+
+/* ---------- Tipografia ---------- */
+.t-display {
+  font-size: clamp(2.9rem, 7.4vw, 8.75rem);
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+}
+.t-h2 {
+  font-size: clamp(2.5rem, 5.6vw, 6.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+.t-h3 {
+  font-size: clamp(1.5rem, 2.3vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+.t-lead {
+  font-size: clamp(1.1rem, 1.45vw, 1.5rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.t-body {
+  font-size: clamp(1rem, 1.05vw, 1.125rem);
+  line-height: 1.6;
+}
+.t-display em,
+.t-h2 em {
+  font-style: normal;
+  color: var(--color-roxo);
+}
+.t-display em.rosa,
+.t-h2 em.rosa {
+  color: var(--color-rosa);
+}
+
+/* ---------- Estados iniciais das animações (só com JS e sem reduced motion) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-split],
+  .js [data-reveal="up"],
+  .js [data-reveal="intro"] {
+    opacity: 0;
+  }
+}
+.split-line {
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* ---------- Cursor personalizado ---------- */
+.has-cursor,
+.has-cursor * {
+  cursor: none !important;
+}
+.cursor-chip {
+  transform-origin: 0% 0%;
+  transition:
+    transform 0.45s var(--ease-expo),
+    opacity 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* ---------- Placeholder de mídia ---------- */
+.media-ph {
+  background:
+    radial-gradient(120% 90% at 15% 10%, rgb(255 255 255 / 0.65), transparent 55%),
+    radial-gradient(90% 80% at 90% 100%, var(--ph-b, #e8dcff), transparent 70%),
+    var(--ph-a, #f5f0ff);
+}
+.media-ph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(10 14 21 / 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(80% 80% at 50% 50%, #000, transparent);
+}
+.tone-lilas {
+  --ph-a: #f5f0ff;
+  --ph-b: #dccbff;
+}
+.tone-rosa {
+  --ph-a: #fff0f8;
+  --ph-b: #ffc2e6;
+}
+.tone-roxo {
+  --ph-a: #7c4ff5;
+  --ph-b: #b93ced;
+}
+.tone-ink {
+  --ph-a: #15131f;
+  --ph-b: #3a2470;
+}
+.tone-mist {
+  --ph-a: #f6f5fa;
+  --ph-b: #e7e4f0;
+}
+
+/* ---------- Carta TCG (placeholder) ---------- */
+.tcg {
+  --mx: 50%;
+  --my: 50%;
+  --rx: 0deg;
+  --ry: 0deg;
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 63 / 88;
+  border-radius: 5.5% / 4%;
+  padding: 5.5%;
+  background: var(--tcg-bg);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.5) inset,
+    0 40px 70px -30px rgb(48 14 110 / 0.45),
+    0 12px 24px -12px rgb(10 14 21 / 0.25);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.6s var(--ease-expo);
+  overflow: hidden;
+  isolation: isolate;
+}
+.tcg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(60% 45% at var(--mx) var(--my), rgb(255 255 255 / 0.55), transparent 70%),
+    linear-gradient(
+      115deg,
+      transparent 25%,
+      rgb(255 120 220 / 0.35) 40%,
+      rgb(140 200 255 / 0.35) 50%,
+      rgb(190 255 220 / 0.25) 58%,
+      transparent 72%
+    );
+  background-size:
+    100% 100%,
+    260% 260%;
+  background-position:
+    0 0,
+    var(--mx) var(--my);
+  mix-blend-mode: overlay;
+  opacity: 0.75;
+}
+.tcg-holo::after {
+  animation: tcg-shine 6s ease-in-out infinite alternate;
+}
+@keyframes tcg-shine {
+  from {
+    background-position:
+      0 0,
+      0% 0%;
+  }
+  to {
+    background-position:
+      0 0,
+      100% 100%;
+  }
+}
+.tcg-frame {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4cqw;
+  border-radius: 4cqw;
+  padding: 4cqw;
+  background: var(--tcg-frame, rgb(255 255 255 / 0.92));
+  color: var(--tcg-ink, var(--color-ink));
+}
+.tcg-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 7.4cqw;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.tcg-top i {
+  width: 7cqw;
+  height: 7cqw;
+  border-radius: 99px;
+  background: var(--tcg-accent);
+  box-shadow: 0 0 0 1.4cqw color-mix(in oklab, var(--tcg-accent) 25%, transparent);
+}
+.tcg-art {
+  position: relative;
+  flex: 1;
+  border-radius: 3cqw;
+  overflow: hidden;
+  background: var(--tcg-art);
+  display: grid;
+  place-items: center;
+}
+.tcg-art img.mark {
+  width: 52%;
+  opacity: 0.9;
+  filter: drop-shadow(0 6cqw 8cqw rgb(10 14 21 / 0.25));
+}
+.tcg-lines {
+  display: grid;
+  gap: 2.4cqw;
+  padding-block: 1cqw;
+}
+.tcg-lines i {
+  display: block;
+  height: 2.6cqw;
+  border-radius: 99px;
+  background: currentColor;
+  opacity: 0.12;
+}
+.tcg-lines i:nth-child(2) {
+  width: 78%;
+}
+.tcg-lines i:nth-child(3) {
+  width: 52%;
+}
+.tcg-label {
+  font-size: 4.6cqw;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.tcg-roxo {
+  --tcg-bg: linear-gradient(150deg, #8a5cff, #6632ef 45%, #3d1aa8);
+  --tcg-art: radial-gradient(90% 80% at 30% 20%, #efe6ff, #b99cff 60%, #6632ef);
+  --tcg-accent: #6632ef;
+}
+.tcg-rosa {
+  --tcg-bg: linear-gradient(150deg, #ff6cc6, #fc11a4 50%, #b10264);
+  --tcg-art: radial-gradient(90% 80% at 30% 20%, #ffe8f6, #ff8ad2 60%, #fc11a4);
+  --tcg-accent: #fc11a4;
+}
+.tcg-lilas {
+  --tcg-bg: linear-gradient(150deg, #f4edff, #d9c9ff 50%, #b8a0ff);
+  --tcg-art: radial-gradient(90% 80% at 30% 20%, #ffffff, #e9dfff 55%, #c6b0ff);
+  --tcg-accent: #b93ced;
+}
+.tcg-ink {
+  --tcg-bg: linear-gradient(150deg, #2a2340, #0a0e15 60%);
+  --tcg-art: radial-gradient(90% 80% at 30% 20%, #4a2fa8, #241848 60%, #0a0e15);
+  --tcg-frame: rgb(255 255 255 / 0.06);
+  --tcg-ink: #fff;
+  --tcg-accent: #fc11a4;
+}
+.tcg-holo {
+  --tcg-bg: conic-gradient(from 210deg, #fc11a4, #b93ced, #6632ef, #7fd3ff, #d9c9ff, #fc11a4);
+  --tcg-art: conic-gradient(from 30deg at 40% 40%, #ffe8f6, #e9dfff, #d6f1ff, #ffe8f6);
+  --tcg-accent: #6632ef;
+}
+
+/* ---------- Pacote de booster real (hero) ---------- */
+.pack {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1);
+  transition: transform 0.7s var(--ease-expo);
+  will-change: transform;
+}
+.pack:hover {
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.12);
+}
+.pack-img {
+  filter: drop-shadow(0 18px 22px rgb(48 14 110 / 0.16)) drop-shadow(0 4px 6px rgb(10 14 21 / 0.1));
+  transition: filter 0.7s var(--ease-expo);
+}
+.pack:hover .pack-img {
+  filter: drop-shadow(0 32px 36px rgb(48 14 110 / 0.24)) drop-shadow(0 6px 10px rgb(10 14 21 / 0.12));
+}
+.pack-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask: var(--mask) center / 100% 100% no-repeat;
+  background:
+    radial-gradient(45% 35% at var(--mx) var(--my), rgb(255 255 255 / 0.5), transparent 70%),
+    linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.28) 48%, transparent 62%);
+  background-size:
+    100% 100%,
+    250% 250%;
+  background-position:
+    0 0,
+    var(--mx) var(--my);
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.pack:hover .pack-shine {
+  opacity: 1;
+}
+/* Carta em hover passa por cima das vizinhas */
+[data-fc]:has(.pack:hover) {
+  z-index: 40 !important;
+}
+
+/* ---------- Pacote de booster (placeholder) ---------- */
+.booster {
+  container-type: inline-size;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--tcg-bg);
+  box-shadow:
+    0 50px 80px -30px rgb(48 14 110 / 0.45),
+    0 1px 0 rgb(255 255 255 / 0.4) inset;
+}
+.booster::before,
+.booster::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 7%;
+  z-index: 2;
+  background:
+    repeating-linear-gradient(90deg, rgb(255 255 255 / 0.22) 0 1.2cqw, rgb(0 0 0 / 0.1) 1.2cqw 2.4cqw),
+    linear-gradient(rgb(255 255 255 / 0.15), rgb(0 0 0 / 0.08));
+}
+.booster::before {
+  top: 0;
+}
+.booster::after {
+  bottom: 0;
+}
+.booster-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.45) 45%, transparent 60%);
+  background-size: 250% 100%;
+  animation: booster-shine 4.5s ease-in-out infinite;
+  mix-blend-mode: overlay;
+}
+@keyframes booster-shine {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
+/* ---------- Carrossel sem barra de rolagem ---------- */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Marquee ---------- */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--speed, 40s) linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .spin-slow,
+  .tcg-holo::after {
+    animation: none;
+  }
+}
