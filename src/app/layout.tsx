@@ -4,7 +4,7 @@ import MotionProvider from "@/components/motion/MotionProvider";
 import Cursor from "@/components/motion/Cursor";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -14,6 +14,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Rastro Collect | O universo TCG em um novo formato de varejo",
   description: site.description,
   openGraph: {
@@ -21,6 +22,12 @@ export const metadata: Metadata = {
     description: site.description,
     locale: "pt_BR",
     type: "website",
+    siteName: "Rastro Collect",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rastro Collect",
+    description: site.description,
   },
 };
 

@@ -11,6 +11,12 @@ export const site = {
   cnpj: "29.458.311/0001-80",
 };
 
+// URL pública do site (usada nas imagens de compartilhamento). Defina NEXT_PUBLIC_SITE_URL quando
+// houver domínio próprio; sem ela, usa a URL de produção que a Vercel injeta no build.
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
+
 export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`;
 export const instagramUrl = `https://instagram.com/${site.instagram}`;
 
