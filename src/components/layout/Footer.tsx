@@ -29,6 +29,16 @@ export default function Footer() {
           </nav>
           <div className="md:col-span-3">
             <p className="mb-4 text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-ink/40">Contato</p>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="WhatsApp"
+              data-cursor-tone="rosa"
+              className="mb-4 block text-[1.35rem] font-semibold tracking-[-0.03em] transition-colors hover:text-rosa"
+            >
+              {site.phone}
+            </a>
             <ul className="space-y-2">
               {contacts.map((c) => (
                 <li key={c.label}>

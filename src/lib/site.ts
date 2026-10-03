@@ -1,11 +1,12 @@
-// Dados de contato [A CONFIRMAR]: trocar pelos oficiais antes de publicar.
+// Dados de contato. Itens marcados com [A CONFIRMAR] ainda precisam dos valores oficiais.
 export const site = {
   name: "Rastro Collect",
   tagline: "Cards. Coleção. Experiência.",
   description:
     "A Rastro Collect leva o universo TCG para dentro dos shopping centers por meio de uma experiência de compra autônoma, moderna e visualmente atrativa.",
-  whatsapp: "5500000000000", // [A CONFIRMAR]
-  whatsappMessage: "Olá! Quero conhecer a Rastro Collect para o meu shopping.",
+  whatsapp: "5512981118932",
+  phone: "(12) 98111-8932",
+  whatsappMessage: "Olá, vim através do site da Rastro e gostaria de sabe mais!",
   email: "contato@rastrocollect.com.br", // [A CONFIRMAR]
   instagram: "rastrocollect", // [A CONFIRMAR]
   cnpj: "29.458.311/0001-80",
