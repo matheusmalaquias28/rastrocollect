@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import MotionProvider from "@/components/motion/MotionProvider";
 import Cursor from "@/components/motion/Cursor";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -46,9 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <MotionProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          {children}
           <Cursor />
         </MotionProvider>
       </body>
